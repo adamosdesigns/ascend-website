@@ -1,7 +1,6 @@
-import React, { useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { X } from 'lucide-react';
-import BlobVideo from './BlobVideo';
 
 interface VideoModalProps {
   isOpen: boolean;
@@ -11,6 +10,15 @@ interface VideoModalProps {
 
 export default function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    if (isOpen && videoRef.current) {
+      videoRef.current.play().catch(console.error);
+    } else if (!isOpen && videoRef.current) {
+      videoRef.current.pause();
+      videoRef.current.currentTime = 0;
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -23,12 +31,12 @@ export default function VideoModal({ isOpen, onClose, videoSrc }: VideoModalProp
         >
           <X className="w-6 h-6" />
         </button>
-        <BlobVideo
-          videoSrc={videoSrc}
+        <video
+          ref={videoRef}
+          src={videoSrc}
           className="w-full h-full object-contain"
           controls
           playsInline
-          autoPlay
         />
       </div>
     </div>,
