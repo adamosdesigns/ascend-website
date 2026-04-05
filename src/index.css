@@ -1,0 +1,169 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Oswald:wght@500;600;700&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Oswald", ui-sans-serif, system-ui, sans-serif;
+  
+  --color-page-bg: #020617;
+  --color-page-bg-end: #0f172a;
+  --color-card-bg: #0b1220;
+  
+  --color-text-primary: #f8fafc;
+  --color-text-secondary: #b8c4d4;
+  --color-text-muted: #6b7f99;
+  
+  --color-border-default: rgba(255, 255, 255, 0.09);
+  
+  --color-accent-primary: #3b82f6;
+  --color-accent-hover: #2563eb;
+  
+  --color-career-day-trading: #22c55e;
+  --color-career-real-estate: #ef4444;
+  --color-career-home-services: #06b6d4;
+  --color-career-shopify: #f97316;
+  --color-career-high-ticket-sales: #f59e0b;
+  --color-career-affiliate-marketing: #8b5cf6;
+  --color-career-social-media: #ec4899;
+  --color-career-creative-freelancing: #a78bfa;
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--color-page-bg);
+  color: var(--color-text-primary);
+}
+
+p {
+  text-wrap: pretty;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 5px;
+}
+::-webkit-scrollbar-track {
+  background: #020617;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.14);
+  border-radius: 3px;
+}
+
+/* Focus ring */
+*:focus-visible {
+  outline: 2px solid var(--color-accent-primary);
+  outline-offset: 3px;
+}
+
+@layer utilities {
+  .bg-grid-overlay {
+    background-image: linear-gradient(rgba(255,255,255,0.018) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.018) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  
+  .text-display {
+    font-family: var(--font-display);
+    text-transform: uppercase;
+    letter-spacing: -0.01em;
+    line-height: 1.1;
+    font-weight: 700;
+    text-wrap: balance;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.8s ease forwards;
+}
+
+.animate-card-fade-in {
+  opacity: 0;
+  animation: cardFadeIn 0.45s ease forwards;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Accessibility Classes */
+.ada-high-contrast {
+  filter: contrast(1.5) saturate(1.2);
+}
+
+.ada-grayscale {
+  filter: grayscale(100%) !important;
+}
+
+.ada-high-contrast.ada-grayscale {
+  filter: contrast(1.5) saturate(1.2) grayscale(100%) !important;
+}
+
+.ada-dyslexia * {
+  font-family: 'OpenDyslexic', 'Comic Sans MS', sans-serif !important;
+}
+
+.ada-highlight-links a {
+  text-decoration: underline !important;
+  text-decoration-color: #ffeb3b !important;
+  text-decoration-thickness: 3px !important;
+  background-color: rgba(255, 235, 59, 0.1) !important;
+  color: #ffeb3b !important;
+}
+
+.ada-pause-animations * {
+  animation: none !important;
+  transition: none !important;
+}
+
+.ada-text-spacing *:not(.accessibility-module):not(.accessibility-module *) {
+  letter-spacing: 0.12em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.5 !important;
+}
+
+.ada-text-scaled {
+  zoom: var(--ada-text-scale, 100%);
+}
+
+/* Prevent text scaling from affecting the accessibility module */
+.ada-text-scaled .accessibility-module {
+  zoom: 0.833333 !important;
+}
+
+/* Firefox fallback for zoom since it doesn't support it well */
+@-moz-document url-prefix() {
+  .ada-text-scaled {
+    transform: scale(1.2);
+    transform-origin: top left;
+    width: 83.333333%;
+  }
+  
+  .ada-text-scaled .accessibility-module {
+    transform: scale(0.833333) !important;
+    transform-origin: bottom left !important;
+  }
+}
