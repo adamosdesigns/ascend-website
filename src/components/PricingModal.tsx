@@ -18,8 +18,8 @@ export default function PricingModal({ isOpen, onClose, path }: PricingModalProp
   if (!isOpen || !path) return null;
 
   return createPortal(
-    <div className="fixed inset-x-0 bottom-0 top-24 z-40 flex items-center justify-center p-4 pt-4 bg-[#020617]/80 backdrop-blur-sm">
-      <div className="relative w-full max-w-4xl bg-[#0b1220] rounded-2xl border border-[rgba(255,255,255,0.09)] shadow-2xl overflow-hidden flex flex-col max-h-[calc(100vh-120px)]">
+    <div className="fixed inset-x-0 bottom-0 top-24 z-40 flex items-center justify-center p-4 pt-4 bg-[#020617]/80 backdrop-blur-sm" onClick={onClose}>
+      <div className="relative w-full max-w-4xl bg-[#0b1220] rounded-2xl border border-[rgba(255,255,255,0.09)] shadow-2xl overflow-hidden flex flex-col max-h-[calc(100vh-120px)]" onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className="flex items-center justify-between p-6 border-b border-[rgba(255,255,255,0.09)]">
           <div className="flex items-center gap-3">
