@@ -40,6 +40,16 @@ export default function PricingModal({ isOpen, onClose, path }: PricingModalProp
 
         {/* Content */}
         <div className="p-6 md:p-8 overflow-y-auto">
+          {/* iOS Pricing Disclaimer */}
+          <div className="mb-6 p-4 rounded-xl bg-[rgba(255,255,255,0.03)] border border-[rgba(255,255,255,0.05)] flex items-start gap-3">
+            <svg className="w-5 h-5 text-[#6b7f99] flex-shrink-0 mt-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <p className="text-[13px] text-[#6b7f99] leading-[1.5]">
+              <strong className="text-[#b8c4d4]">Important Note for iOS Users:</strong> If you are using the Whop iOS app, you may see a higher price due to Apple's 30% in-app purchase fee. To avoid this markup and get the standard price shown below, please complete your purchase using your mobile or desktop web browser.
+            </p>
+          </div>
+
           <div className="grid md:grid-cols-2 gap-6">
             {/* Core Plan */}
             <div className="relative flex flex-col p-6 rounded-2xl border border-[rgba(255,255,255,0.09)] bg-[#0f172a]/50">
@@ -116,6 +126,7 @@ export default function PricingModal({ isOpen, onClose, path }: PricingModalProp
               </a>
             </div>
           </div>
+
         </div>
       </div>
     </div>,
