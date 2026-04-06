@@ -456,6 +456,10 @@ export default function HomePage() {
               {
                 q: "Why was Ascend created?",
                 a: "Many people feel stuck because they are overwhelmed by choices and conflicting advice online. Ascend was built to provide clarity first, then a clear path forward, so people can stop guessing and start building real progress."
+              },
+              {
+                q: "Why does the price look higher on the Whop iOS app?",
+                a: "Apple charges a 30% fee for in-app purchases. To offset this, Whop automatically marks up prices in their iOS app. To avoid this extra fee and get the standard price, simply complete your purchase using your mobile or desktop web browser instead of the Whop app."
               }
             ].map((faq, i) => (
               <FaqItem key={i} question={faq.q} answer={faq.a} />
